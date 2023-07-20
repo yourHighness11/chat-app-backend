@@ -9,5 +9,5 @@ const connectDB = async () => {
     process.exit();
   }
 };
-
+// clear
 module.exports = connectDB;
