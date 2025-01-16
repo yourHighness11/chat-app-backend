@@ -36,7 +36,9 @@ jobs:
               git clone https://github.com/yourHighness11/chat-app-backend
             fi
 
-            git pull origin main
+            cd chat-app-backend
+
+            git pull origin master
 
             npm install --production
 
