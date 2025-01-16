@@ -49,9 +49,9 @@ jobs:
             # fi
 
             # Export environment variables
-            export DATABASE_URI="${DATABASE_URI}"
-            export JWT_SECRET_KEY="${JWT_SECRET_KEY}"
-            export URL="${URL}"
+            export DATABASE_URI=${DATABASE_URI}
+            export JWT_SECRET_KEY=${JWT_SECRET_KEY}
+            export URL=${URL}
 
             echo $DATABASE_URI
             echo $URL
