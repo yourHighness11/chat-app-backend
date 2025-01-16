@@ -23,9 +23,6 @@ jobs:
         env:
           HOST: ${{ secrets.EC2_HOST }}
           USER: ${{ secrets.EC2_USER }}
-          DATABASE_URI: ${{ secrets.DATABASE_URI }}
-          JWT_SECRET_KEY: ${{ secrets.JWT_SECRET_KEY }}
-          URL: ${{ secrets.URL }}
         run: |
           ssh -o StrictHostKeyChecking=no $USER@$HOST << 'EOF'
           
@@ -49,12 +46,9 @@ jobs:
             # fi
 
             # Export environment variables
-            export DATABASE_URI=${DATABASE_URI}
-            export JWT_SECRET_KEY=${JWT_SECRET_KEY}
-            export URL=${URL}
-
-            echo $DATABASE_URI
-            echo $URL
+            export DATABASE_URI="${{ secrets.DATABASE_URI }}"
+            export JWT_SECRET_KEY="${{ secrets.JWT_SECRET_KEY }}"
+            export URL="${{ secrets.URL }}"
 
             # Check if the app is running with pm2, then restart or start
             pm2 list | grep "chat-app-new" || pm2 start server.js --name "chat-app-new"
