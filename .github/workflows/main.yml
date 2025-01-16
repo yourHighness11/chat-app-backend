@@ -21,8 +21,8 @@ jobs:
 
       - name: Deploy application
         env:
-          HOST: ${{secrets.EC2_HOST}}
-          USER: ${{secrets.EC2_USER}}
+          HOST: ${{ secrets.EC2_HOST }}
+          USER: ${{ secrets.EC2_USER }}
         run: |
           ssh -o StrictHostKeyChecking=no $USER@$HOST << 'EOF'
           
