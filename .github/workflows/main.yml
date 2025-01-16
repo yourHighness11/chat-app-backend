@@ -32,7 +32,8 @@ jobs:
 
             npm install --production
 
-            pm2 restart all || pm2 start app.js
+            pm2 list | grep "chat-app" || pm2 start server.js --name "chat-app"
+            pm2 restart "chat-app"
           EOF
 
           
