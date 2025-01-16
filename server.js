@@ -11,7 +11,7 @@ const messageRoutes = require("./routes/messageRoutes");
 const corsOptions = require("./config/corsOptions");
 
 connectDB();
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 app.get("/", (req, res) => {});
 
