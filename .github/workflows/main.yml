@@ -26,6 +26,16 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no $USER@$HOST << 'EOF'
 
+            # Debugging commands
+            echo "Checking current directory"
+            pwd
+
+            echo "Listing files"
+            ls -la
+
+            echo "Checking git status"
+            git status
+
             # Set environment variables directly in the pm2 start command
             export DATABASE_URI="${{ secrets.DATABASE_URI }}"
             export JWT_SECRET_KEY="${{ secrets.JWT_SECRET_KEY }}"
