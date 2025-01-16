@@ -39,11 +39,12 @@ jobs:
 
             
             # Ensure pm2 is installed
-            # if ! command -v pm2 &> /dev/null
-            # then
-            #   echo "pm2 could not be found, installing..."
-            #   npm install pm2 -g
-            # fi
+            if ! command -v pm2 &> /dev/null
+              then
+                echo "pm2 could not be found, installing..."
+                npm install pm2 -g
+            fi
+
 
             # # Export environment variables
             # export DATABASE_URI=mongodb+srv://atlas_new_user:7YWN8tGy5pwDM0tb@mycluster.d3pzsad.mongodb.net/chat-app
