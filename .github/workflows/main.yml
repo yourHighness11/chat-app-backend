@@ -53,6 +53,9 @@ jobs:
             export JWT_SECRET_KEY="${JWT_SECRET_KEY}"
             export URL="${URL}"
 
+            echo $DATABASE_URI
+            echo $URL
+
             # Check if the app is running with pm2, then restart or start
             pm2 list | grep "chat-app-new" || pm2 start server.js --name "chat-app-new"
             pm2 restart "chat-app-new"
