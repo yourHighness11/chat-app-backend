@@ -25,6 +25,11 @@ jobs:
           USER: ${{ secrets.EC2_USER }}
         run: |
           ssh -o StrictHostKeyChecking=no $USER@$HOST << 'EOF'
+
+            # Set environment variables directly in the pm2 start command
+            export DATABASE_URI="${{ secrets.DATABASE_URI }}"
+            export JWT_SECRET_KEY="${{ secrets.JWT_SECRET_KEY }}"
+            export URL="${{ secrets.URL }}"
           
             cd /home/ubuntu/chat-app-backend
 
@@ -37,7 +42,6 @@ jobs:
 
             npm install --production
 
-            
             # Ensure pm2 is installed
             if ! command -v pm2 &> /dev/null
               then
@@ -45,14 +49,8 @@ jobs:
                 npm install pm2 -g
             fi
 
-
-            # # Export environment variables
-            # export DATABASE_URI=mongodb+srv://atlas_new_user:7YWN8tGy5pwDM0tb@mycluster.d3pzsad.mongodb.net/chat-app
-            # export JWT_SECRET_KEY=my_super_duper_secret_key
-            # export URL=https://chat-app-1dfe6.web.app
-
             # Check if the app is running with pm2, then restart or start
-            pm2 list | grep "chat-app-new" || pm2 start server.js --name "chat-app-new"
+            pm2 list | grep "chat-app-new" || pm2 start server.js --name "chat-app-new" --env production
             pm2 restart "chat-app-new"
             pm2 save --force
           EOF
