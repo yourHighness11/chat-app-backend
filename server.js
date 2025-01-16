@@ -13,7 +13,6 @@ const corsOptions = require("./config/corsOptions");
 connectDB();
 app.use(cors());
 app.use(express.json());
-app.get("/", (req, res) => {});
 
 app.use("/api/user", userRoutes);
 app.use("/api/chat", chatRoutes);
@@ -21,8 +20,8 @@ app.use("/api/message", messageRoutes);
 app.all('*', (req, res) => {
   res.status(404).json({ message: 'Endpoint not found' });
 });
-app.use(notFound);
-app.use(errorHandler);
+// app.use(notFound);
+// app.use(errorHandler);
 const server = app.listen(port, () => {
   console.log(`server is running on ${port}`);
 });
