@@ -11,7 +11,7 @@ const messageRoutes = require("./routes/messageRoutes");
 const corsOptions = require("./config/corsOptions");
 // added comment Data
 connectDB();
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 
 app.use("/api/user", userRoutes);
