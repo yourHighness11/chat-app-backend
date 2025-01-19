@@ -45,7 +45,7 @@ jobs:
 
             # if [ ! -d "chat-app-backend" ]; then
             #   echo "Repository not found, cloning..."
-            #   git clone https://github.com/yourHighness11/chat-app-backend
+            #   git clone git@github.com:yourHighness11/chat-app-backend
             # fi
 
             git pull origin master
