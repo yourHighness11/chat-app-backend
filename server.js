@@ -9,7 +9,7 @@ const userRoutes = require("./routes/userRoutes");
 const chatRoutes = require("./routes/chatRoutes");
 const messageRoutes = require("./routes/messageRoutes");
 const corsOptions = require("./config/corsOptions");
-
+// added comment
 connectDB();
 app.use(cors(corsOptions));
 app.use(express.json());
